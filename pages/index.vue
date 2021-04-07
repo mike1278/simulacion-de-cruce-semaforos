@@ -262,7 +262,7 @@ export default Vue.extend({
         return
       }
       this.$store.commit('setData', this.trafficLights)
-      this.$router.push('/simulation')
+      this.$router.push('/simulacion-cruce')
     },
   },
   validations: {

@@ -11,7 +11,7 @@
         >
           <transition-group
             name="traffic1"
-            class="bg-gray-600 bg-opacity-50 flex flex-col-reverse items-end justify-start pb-2"
+            class="flex flex-col-reverse items-end justify-start pb-2"
             tag="div"
             :css="false"
             @enter="
@@ -28,7 +28,7 @@
           </transition-group>
           <transition-group
             name="traffic1"
-            class="bg-gray-600 bg-opacity-50 flex flex-col-reverse items-end justify-start pb-2"
+            class="flex flex-col-reverse items-end justify-start pb-2"
             tag="div"
             :css="false"
             @enter="
@@ -55,7 +55,7 @@
         <div class="w-full h-2/4 md:h-2/3 grid grid-rows-2 gap-y-2">
           <transition-group
             name="traffic2"
-            class="bg-gray-600 bg-opacity-50 flex flex-row-reverse justify-start items-center pr-2"
+            class="flex flex-row-reverse justify-start items-center pr-2"
             tag="div"
             :css="false"
             @enter="
@@ -73,7 +73,7 @@
           </transition-group>
           <transition-group
             name="traffic2"
-            class="bg-gray-600 bg-opacity-50 flex flex-row-reverse justify-start pr-2"
+            class="flex flex-row-reverse justify-start pr-2"
             tag="div"
             :css="false"
             @enter="
@@ -119,7 +119,7 @@
         <div class="w-full h-2/4 md:h-2/3 grid grid-rows-2 gap-y-2">
           <transition-group
             name="traffic3"
-            class="bg-gray-600 bg-opacity-50 flex flex-row justify-start pl-2"
+            class="flex flex-row justify-start pl-2"
             tag="div"
             :css="false"
             @enter="
@@ -137,7 +137,7 @@
           </transition-group>
           <transition-group
             name="traffic3"
-            class="bg-gray-600 bg-opacity-50 flex flex-row justify-start pl-2"
+            class="flex flex-row justify-start pl-2"
             tag="div"
             :css="false"
             @enter="
