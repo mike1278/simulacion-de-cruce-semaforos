@@ -1,0 +1,46 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+input:focus,a:focus,button:focus {
+   @apply outline-none;
+}
+
+.container {
+  @apply p-1 mx-auto;
+  &.centered{
+    @apply flex justify-center items-center;
+  }
+}
+.button {
+  @apply inline-block border-solid border-black border py-3.5 px-8 transition;
+  &.black, &.blue, &.red, &.green {
+    @apply text-white;
+  }
+  &.black {
+    @apply bg-black border-black;
+  }
+  &.blue {
+    @apply bg-blue-500 border-blue-500;
+  }
+  &.red {
+    @apply bg-red-500 border-red-500;
+  }
+  &.green {
+    @apply bg-green-500 border-green-500;
+  }
+}
+
+  .toggle-checkbox:checked {
+    @apply right-0 border-green-400 border-blue-500;
+  }
+  .toggle-checkbox:checked + .toggle-label {
+    @apply bg-green-400 bg-blue-500;
+  }
+
+  .-translate-y-200 {
+    --tw-translate-y: -200%;
+  }
+  .translate-x-200 {
+    --tw-translate-x: 200%;
+  }
