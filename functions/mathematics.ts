@@ -52,6 +52,12 @@ export default class {
     return this.lq() / this.lambda
   }
 
+  // probability that there are no people on the servers
+  // probabilidad de que no haya personas en los servidores
+  public ws(): number {
+    return this.wq() + 1 / this.miu
+  }
+
   set lambda(lambda: number) {
     this._lambda = this.typeTime === 'h' ? lambda : lambda * 60
   }
@@ -68,37 +74,32 @@ export default class {
     return this._miu
   }
 
-  // probability that there are no people on the servers
-  // probabilidad de que no haya personas en los servidores
-  public ws(): number {
-    return this.ls() / this.lambda
-  }
-
   // probability of empty servers | probabilidad de que el sistema este vacío
   public po(): number {
-    const factorialServer = this.factorial(this.servers)
     let rightPartForm: number
     if (this.limit > 0) {
       rightPartForm =
-        1 /
-        (1 - Math.pow(this.lambda / (this.servers * this.miu), this.servers))
-    } else {
-      rightPartForm =
-        this.ro() / this.servers !== 1
-          ? 1 -
-            (1 -
-              Math.pow(this.ro() / this.servers, this.limit - this.servers + 1))
+        this.ro() / this.lambda !== 1
+          ? (1 -
+              Math.pow(
+                this.ro() / this.servers,
+                this.limit - this.servers + 1
+              )) /
+              1 -
+            this.ro() / this.servers
           : this.limit - this.servers + 1
+    } else {
+      rightPartForm = 1 / (1 - this.ro() / this.servers)
     }
     const divisionOfFactorialServer =
-      Math.pow(this.ro(), this.servers) / factorialServer
+      Math.pow(this.ro(), this.servers) / this.factorial(this.servers)
 
     let sumOfFactorial = 0
     for (let i = 0; i < this.servers; i++) {
       sumOfFactorial += Math.pow(this.ro(), i) / this.factorial(i)
     }
 
-    return 1 / ((sumOfFactorial + divisionOfFactorialServer) * rightPartForm)
+    return 1 / (sumOfFactorial + divisionOfFactorialServer * rightPartForm)
   }
 
   // average queue time | cantidad promedio de usuarios en el sistema
@@ -169,14 +170,16 @@ export default class {
             Math.pow(this.servers - this.ro(), 2)))
       )
     } else {
-      return (
-        this.po() *
-        (((Math.pow(this.ro(), this.servers) *
-          (this.limit - this.servers) *
-          (this.limit - this.servers + 1)) /
-          2) *
-          this.factorial(this.servers))
-      )
+      return this.ro() / this.servers !== 1
+        ? this.po() *
+            (Math.pow(this.ro(), this.servers + 1) /
+              (this.factorial(this.servers - 1) *
+                Math.pow(this.servers - this.ro(), 2)))
+        : this.po() +
+            (Math.pow(this.ro(), this.servers) *
+              (this.limit - this.servers) *
+              (this.limit - this.servers + 1)) /
+              this.factorial(2 * this.servers)
     }
   }
 

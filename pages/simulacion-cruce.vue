@@ -228,7 +228,7 @@
             <span class="py-1 px-1 w-10 inline-block">P0</span>
             =
             <span class="py-3 px-2">{{
-              traffic.mathematics.po().toPrecision(4)
+              traffic.mathematics.po().toPrecision(6)
             }}</span>
           </p>
           <p class="border border-solid border-gray-300 border-collapse">
@@ -518,6 +518,7 @@ export default Vue.extend({
       return Math.floor(Math.random() * 5 + 1)
     },
     enterElement(el: any, done: any, { x, y }: any) {
+      console.log('hey')
       anime({
         targets: el,
         translateX: x,
