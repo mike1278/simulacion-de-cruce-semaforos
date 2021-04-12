@@ -24,7 +24,7 @@
     "dotenv": "^8.2.0",
     "nuxt": "^2.15.3",
     "vue-select": "^3.11.2",
-    "vue-tailwind": "^2.1.7",
+    "vue-tailwind": "^2.2.0",
     "vuelidate": "^0.7.6"
   },
   "devDependencies": {
